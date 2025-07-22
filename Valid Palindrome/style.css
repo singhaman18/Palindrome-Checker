@@ -1,0 +1,207 @@
+/* --- General Styles & Variables --- */
+:root {
+  /* --- Light Mode (Default) --- */
+  --body-bg: linear-gradient(45deg, #3b0764, #4c1d95, #8b5cf6);
+  --container-bg: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(235, 235, 245, 0.8);
+  --input-bg: rgba(0, 0, 0, 0.2);
+  --border-color: rgba(255, 255, 255, 0.2);
+  --border-focus: #a78bfa;
+  --button-bg: linear-gradient(45deg, #f472b6, #fb923c);
+  --button-hover-shadow: 0 0 20px rgba(244, 114, 182, 0.7);
+
+  --success-bg: rgba(74, 222, 128, 0.2);
+  --success-text: #dcfce7;
+  --success-border: rgba(74, 222, 128, 0.5);
+  --error-bg: rgba(248, 113, 113, 0.2);
+  --error-text: #fee2e2;
+  --error-border: rgba(248, 113, 113, 0.5);
+  --warning-bg: rgba(251, 191, 36, 0.2);
+  --warning-text: #fef9c3;
+  --warning-border: rgba(251, 191, 36, 0.5);
+}
+
+body[data-theme="dark"] {
+  /* --- Dark Mode --- */
+  --body-bg: linear-gradient(45deg, #0f172a, #1e293b, #334155);
+  --container-bg: rgba(17, 24, 39, 0.6);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --input-bg: rgba(51, 65, 85, 0.5);
+  --border-color: rgba(148, 163, 184, 0.3);
+  --border-focus: #a78bfa;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--body-bg);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+
+/* --- Main Container (Glassmorphism Effect) --- */
+.container {
+  width: 100%;
+  max-width: 450px;
+  background-color: var(--container-bg);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  padding: 2.5rem;
+  z-index: 1;
+  position: relative;
+  transition: background-color 0.5s ease, border 0.5s ease;
+}
+
+/* --- Theme Toggle Button --- */
+#theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: background 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+/* --- Typography --- */
+h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  text-align: center;
+  color: var(--text-secondary);
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+/* --- Input & Button Wrapper --- */
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Input Field --- */
+#text-input {
+  flex-grow: 1;
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+#text-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+#text-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+}
+
+/* --- Check Button --- */
+#check-btn {
+  background-image: var(--button-bg);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#check-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--button-hover-shadow);
+}
+
+/* --- Result Display --- */
+#result {
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  line-height: 1.5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0, 0.1);
+}
+
+#result .bold {
+  font-weight: 700;
+}
+
+/* Result states */
+.success {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+  border-color: var(--success-border);
+}
+.error {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  border-color: var(--error-border);
+}
+.warning {
+  background-color: var(--warning-bg);
+  color: var(--warning-text);
+  border-color: var(--warning-border);
+}
+
+/* --- Responsive Design --- */
+@media (min-width: 640px) {
+  .input-wrapper {
+    flex-direction: row;
+  }
+}
